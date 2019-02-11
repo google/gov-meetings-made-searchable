@@ -15,8 +15,8 @@ dirPath = os.path.normpath(os.getcwd())
 service_account_path = os.path.join(dirPath, service_account_json)
 
 projectId = "__GCP_Project_ID__"
-topicName = "transcodeQueue"
-subName = "media-transcode-subscription"
+topicName = "wordlistQueue"
+subName = "word-list-creation-subscription"
 
 bucketName = "__GCS_Storage_Bucket_Name__"
 utility_service_url = "__Utility_Service_URL__"
