@@ -18,7 +18,7 @@ limitations under the License.
 
 ### Introduction
 
-This is a container that received pubsub messages with `globalId` identifiers and then
+This is a container that receives pubsub messages with `globalId` identifiers and then
 kicks off a workflow to lookup the video associated with that identifier, download the
 corresponding video from Google Cloud Storage, transcode that video to audio in a FLAC
 format, then upload the audio segments to Google Cloud Storage.

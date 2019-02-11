@@ -28,3 +28,8 @@ publish content from videos public meetings and hearings.
 #### transcode-video-to-audio
 This is a container that transcodes a video file to an audio file that is compatible with
 the Google Speech API.
+
+
+#### create-word-list
+This is a container that creates a list of words from the Google Speech API responses that
+will be used for creating a word cloud.
