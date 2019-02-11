@@ -30,9 +30,9 @@ RUN tar -C /usr/local/gcloud -xvf /tmp/google-cloud-sdk.tar.gz
 RUN /usr/local/gcloud/google-cloud-sdk/install.sh
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 
-ADD smaday-speech-api-bc2c81143be8.json /app/smaday-speech-api-bc2c81143be8.json
-RUN gcloud auth activate-service-account --key-file=smaday-speech-api-bc2c81143be8.json
-ENV GOOGLE_APPLICATION_CREDENTIALS /app/smaday-speech-api-bc2c81143be8.json
+ADD __Credential_JSON_File_Name__ /app/__Credential_JSON_File_Name__
+RUN gcloud auth activate-service-account --key-file=__Credential_JSON_File_Name__
+ENV GOOGLE_APPLICATION_CREDENTIALS /app/__Credential_JSON_File_Name__
 
 RUN virtualenv /env
 ENV VIRTUAL_ENV /env
