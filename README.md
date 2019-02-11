@@ -41,5 +41,5 @@ stored on Google Cloud Storage.
 
 
 #### index-meeting
-This is a container that parses Google Speech API responses and writes them to an Elastic
-Search index in a batch.
+This is a container that parses Google Speech API responses and writes the contents to an
+Elastic Search index in a batch process.
