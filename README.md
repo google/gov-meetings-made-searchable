@@ -38,3 +38,8 @@ will be used for creating a word cloud.
 #### generate-wordcloud
 This is a container that creates a word cloud image in PNG format from a list of words
 stored on Google Cloud Storage.
+
+
+#### index-meeting
+This is a container that parses Google Speech API responses and writes them to an Elastic
+Search index in a batch.
