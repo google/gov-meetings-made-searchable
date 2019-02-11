@@ -33,3 +33,8 @@ the Google Speech API.
 #### create-word-list
 This is a container that creates a list of words from the Google Speech API responses that
 will be used for creating a word cloud.
+
+
+#### generate-wordcloud
+This is a container that creates a word cloud image in PNG format from a list of words
+stored on Google Cloud Storage.
