@@ -16,6 +16,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
+
 ### Introduction
 
 This is a Google App Engine app that facilitates interaction with the Google Cloud SQL
@@ -41,5 +42,5 @@ Deploy to App Engine
 ### Note on Security
 As implemented, these services and API end points are not secure. Anyone with the right
 URL and paths code read and write to the system. Before deploying this app into
-production, you will want to implement an authentication protocol or custom security
-schema (Basic API Authentication w/ TLS, OAuth2, etc).
+production, you will want to implement a custom security schema or standard authentication
+protocol (Basic API Authentication w/ TLS, OAuth2, etc).s
