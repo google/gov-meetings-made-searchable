@@ -36,3 +36,10 @@ Test Locally
 
 Deploy to App Engine
 `gcloud app deploy --promote`
+
+
+### Note on Security
+As implemented, these services and API end points are not secure. Anyone with the right
+URL and paths code read and write to the system. Before deploying this app into
+production, you will want to implement an authentication protocol or custom security
+schema (Basic API Authentication w/ TLS, OAuth2, etc).
