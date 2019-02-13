@@ -39,6 +39,12 @@ to an Elastic Search instance. This service handles searches for materials in a
 particular meeting.
 
 
+#### archive-video-search
+This is a Google App Engine Flex app that provides a wrapper and proxy for requests
+to and responses from an Elastic Search instance. This service handles searches for
+materials across all meetings in an index.
+
+
 #### transcode-video-to-audio
 This is a container that transcodes a video file to an audio file that is compatible with
 the Google Speech API.
