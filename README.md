@@ -46,5 +46,5 @@ Elastic Search index in a batch process.
 
 #### publish-pdf-transcript
 
-This is a container that receives pubsub messages with `globalId` identifiers and then
-parses Google Speech API responses to produce a human readable PDF transcript.
+This is a container that parses Google Speech API responses and produces a human readable
+PDF transcript.
