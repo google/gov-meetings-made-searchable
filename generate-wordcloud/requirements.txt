@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # This is not an officially supported Google product, though support
 # will be provided on a best-effort basis.
 
