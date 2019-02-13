@@ -25,6 +25,11 @@ repo is a series of utilities and containers you can use to transcode, transcrib
 publish content from videos public meetings and hearings.
 
 
+#### app-engine-utility-service
+This is a Google App Engine app that facilitates interaction with the Google Cloud SQL
+database, and provides common utilities for back end services.
+
+
 #### transcode-video-to-audio
 This is a container that transcodes a video file to an audio file that is compatible with
 the Google Speech API.

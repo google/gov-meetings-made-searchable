@@ -130,7 +130,7 @@ def gcsUpload(globalId, fileName, filePath):
 
 
 def assignUrl(globalId, transcriptUrl):
-	reqUrl = utility_service_url + "/ep-idTranscript"
+	reqUrl = utility_service_url + "/idTranscript"
 	payloadObj = { 
 		"gId": globalId,
 		"transcriptUrl": transcriptUrl

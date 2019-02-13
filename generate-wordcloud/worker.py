@@ -128,10 +128,6 @@ def generateStr(globalId, prodTranscript):
 	)
 
 	cleanList = [i for i in masterStr.lower().split() if i not in stopWords]
-	#cleanList = []
-	#for eachEntry in masterStr.lower().split():
-	#	if eachEntry not in stopWords:
-	#		cleanList.append(eachEntry)
 
 	c = Counter(cleanList)
 	cleanStr = " ".join(cleanList)
@@ -228,7 +224,7 @@ def gcsUpload(globalId, fileName, filePath):
 
 
 def assignUrl(globalId, wcUrl):
-	reqUrl = utility_service_url + "/ep-idWordcloud"
+	reqUrl = utility_service_url + "/idWordcloud"
 	payloadObj = { 
 		"gId": globalId,
 		"wcUrl": wcUrl
