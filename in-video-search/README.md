@@ -20,8 +20,8 @@ limitations under the License.
 ### Introduction
 
 This is a Google App Engine Flex app that provides a wrapper and proxy for requests
-to an Elastic Search instance. This service handles searches for materials in a
-particular meeting. Meetings are identified with a `urlId` parameter.
+to and responses from an Elastic Search instance. This service handles searches for
+materials in a particular meeting. Meetings are identified with a `urlId` parameter.
 
 
 ### Assumptions
@@ -33,4 +33,4 @@ particular meeting. Meetings are identified with a `urlId` parameter.
 ### Deploy this App
 
 Deploy to App Engine
-`gcloud app deploy --promote`
+`gcloud app deploy app.yaml`
