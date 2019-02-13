@@ -32,6 +32,4 @@ materials in a particular meeting. Meetings are identified with a `urlId` parame
 
 ### Deploy this App
 
-Deploy to App Engine
-
-`gcloud app deploy app.yaml`
+Deploy to App Engine `gcloud app deploy app.yaml`
