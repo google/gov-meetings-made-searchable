@@ -1,4 +1,4 @@
-## App Engine Utility Service
+## App Engine Front End Service
 
 This is not an officially supported Google product, though support will be provided on a best-effort basis.
 
@@ -19,15 +19,15 @@ limitations under the License.
 
 ### Introduction
 
-This is a Google App Engine app that facilitates interaction with the Google Cloud SQL
-database, and provides common utilities for back end services.
+This is a Google App Engine app that provides a front end to the project. It uses the
+Material Design for Bootstrap component library and surfaces backend data via several
+endpoint (ep) API services.
 
 
 ### Assumptions
 
 * You have created a Google Cloud SQL database called `prodDb`
 * You have created a table in the `prodDb` database called `meetingRegistry`
-* You have installed the third-party Python libraries in the `lib` directory `pip install -t lib -r requirements.txt`
 
 
 ### Test and Deploy this App
@@ -37,10 +37,3 @@ Test Locally
 
 Deploy to App Engine
 `gcloud app deploy --promote`
-
-
-### Note on Security
-As implemented, these services and API end points are not secure. Anyone with the right
-URL and paths code read and write to the system. Before deploying this app into
-production, you will want to implement a custom security schema or standard authentication
-protocol (Basic API Authentication w/ TLS, OAuth2, etc).

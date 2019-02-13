@@ -24,6 +24,10 @@ repo is a series of utilities and containers you can use to transcode, transcrib
 publish content from videos public meetings and hearings.
 
 
+#### app-engine-front-end
+This is a Google App Engine app that provides a front end to the project.
+
+
 #### app-engine-utility-service
 This is a Google App Engine app that facilitates interaction with the Google Cloud SQL
 database, and provides common utilities for back end services.
