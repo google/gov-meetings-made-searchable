@@ -17,7 +17,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 
-
 ### Introduction
 
 This is project to make the contents of public meetings searchable and discoverable. This
