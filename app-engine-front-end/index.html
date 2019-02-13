@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--
+
+This is not an officially supported Google product, though support
+will be provided on a best-effort basis.
+
+Copyright 2018 Google LLC
+
+Licensed under the Apache License, Version 2.0 (the "License"); you
+may not use this file except in compliance with the License.
+
+You may obtain a copy of the License at:
+
+   https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-->
+
+<head>
+    <title>Superior, Colorado - Public Meetings & Hearings</title>
+
+	<script async src="https://www.googletagmanager.com/gtag/js?id=__Google_Analytics_Config_ID__"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag("js", new Date());
+		gtag("config", "__Google_Analytics_Config_ID__");
+	</script>
+
+    <meta charset="utf-8">
+	<meta name="description" content="Town of Superior, Colorado public meetings and hearings.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="./js/iframe_api.js"></script>
+
+    <link rel="stylesheet" href="css/font-awesome-all.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet">
+    <style>
+    	@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+    	body {
+    		overscroll-behavior-y: none;
+    	}
+        .play {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin-right: 10px;
+        }
+        .linked-card {
+	        color: black
+        }
+        #headerImg {
+        	margin-right: 20px;
+        	border-style: solid;
+        	border-width: 2px;
+        }
+        #jtText {
+        	float: right;
+        	padding-top: 10px;
+        }
+        #archive_spacer_div {
+        	height: 10px;
+        }
+        #jumbotronRow {
+        	padding-bottom: 8px;
+        }
+        #loadContainer {
+        	padding-bottom: 10px;
+        }
+        #meetingInfo {
+        	padding-bottom: 30px;
+        }
+        #locationDiv {
+        	float: right;
+        }
+        .supportingHdr {
+			font-size: 15pt;
+		}
+		.videoTally {
+			font-size: 12pt;        
+		}
+		.loadingDiv {
+			width: 100%;
+			text-align: center;
+			padding-bottom: 22px;
+		}
+        #lg-video-card {
+			padding: 8px;
+			min-height: 195px;
+        }
+        #lg-video-card-title {
+        	min-height: 100px;
+        }
+        #sm-card-container {
+        	margin: auto;
+        	text-align: center;
+    		padding-top: 12px;
+        	max-width: 320px;
+        }
+		#sm-video-card {
+			padding: 10px;
+			min-width: 230px;
+			min-height: 160px;
+		}
+		#sm-video-card-title {
+        	min-height: 60px;
+		}
+        #videoPlayer {
+			min-height: 350px;
+			background-color: #000;
+        }
+        iframe {
+        	margin-top: 9px;
+			margin-bottom: 6px;
+        }
+        #video_link_div {
+        	width: 100%;
+        	border: 1px solid rgba(0,0,0,.1);
+        	background: #f5f5f5;
+        	margin-bottom: 13px;
+        }
+        #video_link_desc {
+        	display: inline-flex;
+        	height: 36px;
+        	padding-top: 12px;
+        	padding-left: 6px;
+        	font-size: 10pt;
+			font-weight: 400;
+        }
+        #copy_video_link_btn {
+        	float: right;
+        	display: inline;
+        }
+        #video_link_textbox {
+        	width: 100%;
+        	color: #777;
+        	padding: 4px;
+        	font-size: 9pt;
+        }
+        #downloadRow {
+        	padding-top: 20px;
+        	padding-bottom: 32px;
+        }
+        .sectionHeader {
+        	text-align: left;
+        	border-bottom: 2px solid #dbd7d2;
+        	font-weight: 500;
+        	font-size: 13pt;
+        	color: #4682c1;
+			width: 100%;
+        	margin-bottom: 10px;
+        }
+		#downloadItems {
+			text-align: center;
+			width: 100%;
+			padding-top: 4px;
+		}
+        .fileLink {
+        	display: block;
+        	width: 180px;
+        	padding-top: 16px;
+        	font-size: 11pt;
+        	font-weight: 500;
+        	white-space: nowrap;
+        	vertical-align: bottom;
+        }
+		#video_contents_div {
+			padding-top: 10px;
+		}
+		#segmentRow {
+			padding-top: 20px;
+        	padding-bottom: 18px;
+		}
+        #segmentCard {
+        	height: 326px;
+        	margin-top: 20px;
+        }
+        #segmentContainer {
+        	padding: 0;
+        	overflow-y: scroll !important;
+        }
+        #segmentEntries {
+        	padding: 0;
+        }
+        .segmentEntry {
+			display: inline-block;
+        	font-size: 10pt;
+        	min-height: 24px;
+        }
+        .segment_icon {
+			color: #4682c1;
+			font-size: 1.5em;
+        }
+        .segmentIcon_div {
+        	display: inline-block;
+        	margin-right: 8px;
+        }
+        #searchRow {
+        	padding-bottom: 30px;
+        }
+        #searchCard {
+			height: 446px;
+        }
+        #resultsContainer {
+        	padding:0;
+        	overflow-y: scroll;
+        }
+        #wordCloud {
+			object-fit: fill;
+        }
+        .searchTimestamp {
+        	display: inline-block;
+        	width: 116px;
+        	font-size: 9pt;
+        	color: hsl(0, 0%, 53.3%);
+        }
+        .searchResult {
+        	display: inline-block;
+        	font-size: 11pt;
+        }
+        .searchResult em {
+        	background-color: yellow;
+        	font-weight: 600;
+        	font-style: normal;
+        }
+        .resultsHeader {
+        	width: 100%;
+        	padding: 8px;
+        }
+        .countDiv {
+        	width: 50%;
+        	display: inline-block;
+        	font-size: 10pt;
+        	text-align: left;
+        	font-weight: 500;
+        }
+        .clearDiv {
+        	width: 50%;
+        	display: inline-block;
+        	font-size: 10pt;
+        	text-align: right;
+        }
+        #relatedRow {
+        	padding-top: 0px;
+        	padding-bottom: 40px;
+        }
+        #relatedDocs {
+        	margin-bottom: 12px;
+        }
+        #filesSection {
+        	padding-top: 4px;
+			text-align: center;
+        	padding-bottom: 32px;
+        }	
+		.fileContainer {
+			cursor: pointer;
+			display: inline-block;
+			border: 1px solid #dbd7d2;
+			width: 150px;
+			margin: 6px;
+			text-align: center;
+			padding-top: 1px;
+		}
+		.thumbnailContainer {
+			height: 80px;
+			max-height: 80px;
+			overflow: hidden;
+			text-align: center;
+		}
+		.detailsContainer {
+			border-top: 1px solid #dbd7d2;
+			height: 38px;
+			padding-left: 4px;
+			padding-right: 4px;
+			padding-top: 8px;
+			font-weight: 500;
+			font-size: 10pt;
+		}
+		.file_type_img {
+			vertical-align: top;
+			padding-top: 1px;
+			padding-right: 10px;
+		}
+        #menu-button-selected {
+			border-bottom: 2px solid black;
+        }
+        input[type=search]::-webkit-search-cancel-button {
+            -webkit-appearance: searchfield-cancel-button;
+        }
+        input[type=search] {
+            -webkit-appearance: none;
+        }
+		#searchWrapper {
+			margin: auto;
+			width: 100%;
+			padding-top: 6px;
+			padding-bottom: 7px;
+		}
+		#searchDiv {
+			margin: auto;
+			width: 320px;
+		}
+		.searchTerm {
+			float: left;
+			width: 280px;
+			border: 2px solid #4682c1;
+			padding: 5px;
+			height: 38px;
+			border-radius: 5px;
+			outline: none;
+			color: #000;
+		}
+		.searchTerm:focus{
+			color: #000;
+		}
+		.searchButton {
+			position: relative;  
+			right: 0px;
+			left: -6px;
+			width: 40px;
+			height: 38px;
+			border: 1px solid #4682c1;
+			background: #4682c1;
+			text-align: center;
+			color: #fff;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 20px;
+		}
+        #searchHeader {
+        	font-weight: 300;
+			font-style: italic;
+		}
+		#searchQuery {
+			font-weight: 500;
+		}
+		#loading_search_results {
+			width: 100%;
+        	padding: 8px;
+        	font-size: 10pt;
+        	text-align: left;
+        	font-weight: 500;
+		}
+		#search_results_header_div {
+			width: 100%;
+			min-width: 320px;
+			text-align: right;
+			font-weight: 400;
+			padding-right: 0px;
+			padding-top: 10px;
+			padding-bottom: 2px;
+		}
+		#search_results_footer_div {
+			width: 100%;
+			min-width: 320px;
+			text-align: right;
+			font-weight: 400;
+			padding-top: 2px;
+			padding-bottom: 20px;
+		}
+		#results_info_div {
+			display: inline-block;
+			padding-top: 8px;
+			color: #696969;
+			float: left;
+			font-size: 11pt;
+			font-weight: 300;
+		}
+		.page_span_text {
+			padding-right: 6px;
+		}
+		.archive_search_page_link {
+			text-decoration: underline;
+			padding-left: 4px;
+			padding-right: 4px;
+		}
+		.current_archive_results_page {
+			font-weight: 500;
+			padding-left: 2px;
+			padding-right: 2px;
+		}
+		#search_results_container {
+			margin: auto;
+			padding-top: 20px;
+			padding-bottom: 8px;
+			padding-left: 4px;
+			padding-right: 4px;
+		}
+		#search_result_card {
+			width: 100%;
+			margin-bottom: 10px;
+			padding: 10px;
+		}
+		.search_result_title {
+			font-weight: 320;
+			color: #1a0dab;
+			text-decoration: underline;
+			margin-bottom: 4px;
+		}
+		#second_row {
+			font-weight: 300;
+			text-decoration: italic;
+			padding-top: 0px;
+			padding-left: 1px;
+			margin-top: -3px;
+			width: 100%;
+		}
+		#third_row {
+			text-align: right;
+			font-weight: 400;
+			padding-left: 1px;
+			margin-top: -2px;
+			width: 100%;
+		}
+		#archive_right_column {
+			padding-top: 92px;
+			padding-bottom: 40px;
+		}
+		#scatterCard {
+			float: right;
+			width: 320px;
+			min-height: 300px;
+			text-align: center;
+			font-size: 10pt;
+			padding: 10px;
+			margin-bottom: 20px;
+		}
+		#pieCard {
+			float: right;
+			width: 320px;
+			min-height: 220px;
+			text-align: center;
+			font-size: 10pt;
+			padding: 10px;
+		}
+		@media only screen and (max-width: 768px) {
+            #meetingInfo {
+				flex-direction: column-reverse;
+				text-align: center;
+            }
+            #locationDiv {
+            	width: 100%;
+            }
+			.imgcenter {
+				text-align: center;
+			}
+			#jtText {
+				text-align: center;
+			}
+			#archive_right_column {
+				padding-top: 10px;
+			}
+			#scatterCard {
+				margin: auto;
+				text-align: center;
+				float: inherit;
+				margin-bottom: 20px;
+			}
+			#pieCard {
+				margin: auto;
+				text-align: center;
+				float: inherit;
+				margin-bottom: 30px;
+			}
+		}
+		@media screen and (min-width: 769px) {
+			.imgcenter {
+				float: left;
+			}
+
+		}
+		#headerIdentifier {
+        	width: 160px;
+        }
+        #headerText {
+        	font-size: 10pt;
+        	font-weight: 400;
+        }
+        #loadingRow {
+        	text-align: center;
+        }
+        #pageFooter {
+        	padding-left: 6px;
+        	padding-right: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar sticky-top d-flex flex-column flex-md-row align-items-center p-3 px-md-3 mb-3 bg-white border-bottom box-shadow">
+		<h4 class="my-0 ml-md-3 mr-md-auto font-weight-normal" style="color: #4682c1;"><strong>Engaged Citizens</strong></h5>
+		<nav class="my-2 my-md-0 mr-md-0">
+			<a class="p-3 text-dark" href="#" id="href-meeting-archive"><strong>Meetings Home</strong></a>
+			<a class="p-3 text-dark" href="#" id="href-upcoming-meetings"><strong>Upcoming Meetings</strong></a>
+		</nav>
+	</div>
+
+    <main class="mt-2 pt-2">
+        <div class="container" id="pageContainer"></div>
+    </main>
+
+
+	<div id="pageFooter" class="footer-copyright text-center py-3">This is an experimental project that only works with the Google Chrome and Mozilla Firefox web browsers.
+		<a href="https://goo.gl/forms/dxZKwI3mKVHLB7Ii2" target="_blank"> Please send your feedback and suggestions!</a>
+	</div>
+
+
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript">
+        new WOW().init();
+    </script>
+	<script>
+		currentPage = null;
+		chartsReady = false;
+		google.load("visualization", "1.0", {"packages":["corechart"]});
+		google.setOnLoadCallback(function() {
+			chartsReady = true;
+		});
+		function loadJSON(requestUrl, callback) {
+			var xobj = new XMLHttpRequest();
+				xobj.overrideMimeType("application/json");
+				xobj.open("GET", requestUrl, true);
+				xobj.onreadystatechange = function () {
+				if (xobj.readyState == 4 && xobj.status == 200) {
+					callback(xobj.responseText);
+				}
+			};
+			xobj.send(null);  
+		}
+		function mkHeading(headingSize, headingClass, headingContent, isStrong) {
+			var newHeading = document.createElement(headingSize);
+			if (headingClass) {
+				newHeading.className = headingClass;
+			}
+			if (isStrong == true) {
+				var strongTag = document.createElement("strong");
+				strongTag.innerHTML = headingContent
+				newHeading.innerHTML = strongTag.outerHTML;
+			} else {
+				newHeading.innerHTML = headingContent;
+			}
+			return newHeading;
+		}
+		function mkHref(hrefClass, hrefSrc, hrefTxt) {
+			var newHref = document.createElement("a");
+			if (hrefClass) {
+				newHref.className = hrefClass;
+			}
+			newHref.href = hrefSrc;
+			newHref.innerHTML = hrefTxt;
+			return newHref;
+		}
+		function mkImage(imgId, imgClass, imgSrc, imgWidth, imgHeight) {
+			var newImg = document.createElement("img");
+			if (imgId) {
+				newImg.id = imgId;
+			}
+			if (imgClass) {
+				newImg.className = imgClass;
+			}
+			newImg.src = imgSrc;
+			if (imgWidth) {
+				newImg.width = imgWidth;
+			}
+			if (imgHeight) {
+				newImg.height = imgHeight;
+			}
+			return newImg;
+		}
+		function mkItalic(italicClass, italicContent) {
+			var newItalic = document.createElement("i");
+			newItalic.className = italicClass;
+			newItalic.innerHTML = italicContent;
+			return newItalic;
+		}
+		function mkHr(hrClass) {
+			var newHr = document.createElement("hr");
+			newHr.className = hrClass;
+			return newHr;
+		}
+		function mkSection(sectionClass) {
+			var newSection = document.createElement("section");
+			newSection.className = sectionClass;
+			return newSection;
+		}
+		function mkButton(buttonClass, buttonContents) {
+			var newButton = document.createElement("button");
+			newButton.className = buttonClass;
+			newButton.innerHTML = buttonContents;
+			return newButton;
+		}
+		function mkCenter(tagContents) {
+			var centerTag = document.createElement("center");
+			centerTag.innerHTML = tagContents;
+			return centerTag;
+		}
+		function mkParagraph(pClass, pContent, isStrong){
+			var newParagraph = document.createElement("p");
+			if (pClass) {
+				newParagraph.className = pClass;
+			}
+			if (isStrong == true) {
+				var strongTag = document.createElement("strong");
+				strongTag.innerHTML = pContent
+				newParagraph.innerHTML = strongTag.outerHTML;
+			} else {
+				newParagraph.innerHTML = pContent;
+			}
+			return newParagraph;
+		}
+		function mkBr() {
+			var newBr = document.createElement("br");
+			return newBr;
+		}
+		function mkSpan(spanClass, spanId, spanContent) {
+			newSpan = document.createElement("span");
+			if (spanClass) {
+				newSpan.className = spanClass;
+			}
+			if (spanId) {
+				newSpan.id = spanId;
+			}
+			if (spanContent) {
+				newSpan.innerHTML = spanContent;
+			}
+			return newSpan;;
+		}
+		function mkDiv(divId, divClass, divContent) {
+			var newDiv = document.createElement("div");
+			if (divId) {
+				newDiv.id = divId;
+			}
+			if (divClass) {
+				newDiv.className = divClass;
+			}
+			newDiv.innerHTML = divContent;
+			return newDiv;
+		}
+
+		function mk_large_video_card(cardTitle, cardDate, meetingId, urlIdentifier) {
+			cardTitle = mkHeading("h5", "card-title", cardTitle, true);
+			titleDiv = mkDiv("lg-video-card-title", null, cardTitle.outerHTML);
+			cardDate = mkHeading("h6", null, cardDate, false);
+			dateDiv = mkDiv(null, null, cardDate.outerHTML);
+
+			cardDiv = mkDiv(null, "card-body", titleDiv.outerHTML);
+			cardDiv.appendChild(dateDiv);
+			iconParagraph = mkItalic("fas fa-play-circle fa-2x", null);
+			playIcon = mkParagraph("play", iconParagraph.outerHTML, false);
+			cardDiv.appendChild(playIcon);
+
+			newCard = mkDiv("lg-video-card", "card", cardDiv.outerHTML);
+			//newCard.style.backgroundImage = "url('./img/" + youtubeId + ".png')";
+
+			newHref = mkHref("linked-card", "#", null);
+			newHref.appendChild(newCard);
+			newHref.addEventListener("click", function(eventObj) {
+				eventObj.preventDefault();
+				window.location.hash = "#meeting-details?m=" + urlIdentifier;
+			});
+			newColumn = mkDiv(null, "col-lg-4 col-md-6 mb-4", "");
+			newColumn.appendChild(newHref);
+
+			document.getElementById("latestCards").appendChild(newColumn);
+		}
+		function populateArchive() {
+			pageContainer = document.getElementById("pageContainer");
+			pageContainer.appendChild(make_loading_div());
+			remove_load_button();
+			
+			reqUrl = "./ep-meetingArchive?lastMeeting=" + archiveDisplay.toString();
+			loadJSON(reqUrl, function(responseObj) {
+				remove_loading_div();
+				var archiveObj = JSON.parse(responseObj);
+				archiveDisplay = archiveDisplay + Object.keys(archiveObj.meetingList).length;
+				Object.keys(archiveObj.meetingList)
+					.sort()
+					.reverse()
+					.forEach(function(key, value) {
+						mk_large_video_card(
+						archiveObj.meetingList[key].desc,
+						archiveObj.meetingList[key].date,
+						archiveObj.meetingList[key].meetingId,
+						archiveObj.meetingList[key].urlIdentifier
+					)
+				});
+
+				if (archiveDisplay < totalVideos) {
+					display_load_button();
+				}
+	 		});
+		}
+		function remove_load_button() {
+			var buttonElement = document.getElementById("loadContainer");
+
+			if (buttonElement) {
+				buttonElement.parentNode.removeChild(buttonElement);
+				//var loadMore = document.getElementById("loadMore");
+				//loadMore.innerHTML = "Loading...";
+			}
+
+		}
+		function populateJumbotron(jumbotronDetails) {
+			jtRow = mkDiv("jumbotronRow", "row justify-content-md-center", null);
+			jtHolder = mkDiv(null, "align-self-center mx-auto", null);
+			headerImg = mkImage("headerImg", null, jumbotronDetails.headerImg, "150", "150");
+			imgDiv = mkDiv("jtImage", "imgcenter", null);
+			imgDiv.appendChild(headerImg);
+			jtHolder.appendChild(imgDiv);
+
+			jtHeader = mkHeading("h2", null, jumbotronDetails.headerTxt, true);
+			jtSupport = mkParagraph("supportingHdr", jumbotronDetails.supportingTxt, true);
+			videoIcon = mkItalic("fa fa-video-camera", null);
+			videoCount = jumbotronDetails.videoCnt.toString();
+			videoContent = videoIcon.outerHTML + "&nbsp;&nbsp;" + videoCount + " videos";
+			jtVideo = mkParagraph("videoTally", videoContent, true);
+			jtText = mkDiv("jtText", null, "");
+			jtText.appendChild(jtHeader);
+			jtText.appendChild(jtSupport);
+			jtText.appendChild(jtVideo);
+			jtHolder.appendChild(jtText);
+			jtRow.appendChild(jtHolder);
+			pageContainer = document.getElementById("pageContainer");
+			pageContainer.appendChild(jtRow);
+			newHr = mkHr("my-4");
+			pageContainer.appendChild(newHr);
+
+			searchWrapper = make_search_bar(null);
+			pageContainer.appendChild(searchWrapper);
+
+			newHr = mkHr("my-4");
+			pageContainer.appendChild(newHr);
+
+
+			spacerDiv = mkDiv("archive_spacer_div", null, null);
+			pageContainer.appendChild(spacerDiv);
+
+			recentHeader = mkHeading("h5", "title", "Recent Meetings", false);
+			pageContainer.appendChild(recentHeader);
+
+			spacerDiv = mkDiv("archive_spacer_div", null, null);
+			pageContainer.appendChild(spacerDiv);
+
+			gridRow = mkDiv("latestCards", "row mb-1 wow fadeIn", null);
+			newSection = mkSection("text-center");
+			newSection.appendChild(gridRow);
+			pageContainer.appendChild(newSection);
+
+			populateArchive();
+		}
+		function make_loading_div() {
+			loadingDiv = mkDiv("loadingDiv", "loadingDiv", "Loading meetings...");
+			return loadingDiv;
+		}
+		function remove_loading_div() {
+			var loadingDiv = document.getElementById("loadingDiv");
+
+			if (loadingDiv) {
+				loadingDiv.parentNode.removeChild(loadingDiv);
+			}
+		}
+		function display_load_button() {
+			pageContainer = document.getElementById("pageContainer");
+			moreButton = mkButton("btn btn-primary", "Load More");
+			moreButton.addEventListener("click", function() {
+				populateArchive();
+			});
+			centerTag = mkCenter(null);
+			centerTag.appendChild(moreButton);
+			colDiv = mkDiv(null, "col-md-12", null);
+			colDiv.appendChild(centerTag);
+			rowDiv = mkDiv("loadMore", "row", null);
+			rowDiv.appendChild(colDiv);
+			containerDiv = mkDiv("loadContainer", "container", null);
+			containerDiv.appendChild(rowDiv);
+			pageContainer.appendChild(containerDiv);
+		}
+		function pg_meetingArchive() {
+			//history.pushState(null, null, "#meeting-archive");
+			currentPage = "meetingArchive";
+			loadJSON("./ep-jumbotronContent", function(responseObj) {
+				var jumbotronDetails = JSON.parse(responseObj);
+				totalVideos = jumbotronDetails["videoCnt"];
+				populateJumbotron(jumbotronDetails);
+	 		});
+		}
+		function upcomingRow(eventTitle, eventDate) {
+			tableRow = document.createElement("tr");
+			eventCol =  document.createElement("td");
+			eventCol.innerHTML = eventTitle;
+			dateCol = document.createElement("td");
+			dateCol.innerHTML = eventDate;
+			tableRow.appendChild(eventCol);
+			tableRow.appendChild(dateCol);
+			tableBody = document.getElementById("upcomingTable");
+			tableBody.appendChild(tableRow);
+		}
+		function make_search_bar(searchQuery) {
+			searchWrapper = mkDiv("searchWrapper", "row", null);
+			searchDiv = mkDiv("searchDiv", null, null);
+			var searchBox = document.createElement("input");
+			searchBox.id = "archive_search_input";
+			searchBox.autocomplete = "off";
+			searchBox.type = "text";
+			if (searchQuery) {
+				searchBox.value = searchQuery;
+			}
+			searchBox.className = "searchTerm";
+			searchBox.placeholder = "Search the meeting archive";
+			searchBox.addEventListener("keypress", function (e) {
+				var key = e.which || e.keyCode;
+				if (key === 13) {
+					if (searchBox.value.length > 0) {
+						archive_search_handler();
+					}
+				}
+			});
+
+			searchIcon = mkItalic("fa fa-search", null);
+			searchButton = mkButton("searchButton", null);
+			searchButton.type = "submit";
+			searchButton.appendChild(searchIcon);
+			searchButton.addEventListener("click", function (e) {
+				if (searchBox.value.length > 0) {
+					archive_search_handler();
+				}
+			});
+
+			searchDiv.appendChild(searchBox);
+			searchDiv.appendChild(searchButton);
+			searchWrapper.appendChild(searchDiv);
+
+			return searchWrapper;
+		}
+		function archive_search_handler() {
+			searchQuery = document.getElementById("archive_search_input").value;
+			if (currentPage != "searchArchive") {
+				window.location.hash = "#archive-search?q=" + searchQuery;
+			} else {
+				pageContainer = document.getElementById("search_results_container");
+				pageContainer.innerHTML = "";
+
+				search_results_header_div = document.getElementById("search_results_header_div");
+				search_results_footer_div = document.getElementById("search_results_footer_div");
+				search_results_header_div.innerHTML = "";
+				search_results_footer_div.innerHTML = "";
+
+				pageContainer = document.getElementById("archive_right_column");
+				pageContainer.innerHTML = "";
+				dispatch_archive_search(searchQuery);
+			}
+		}
+		function pg_searchArchive(searchQuery) {
+			currentPage = "searchArchive";
+			rowDiv = mkDiv(null, "row", null);
+
+			searchWrapper = make_search_bar(searchQuery);
+			pageContainer.appendChild(searchWrapper);
+
+			searchDivider = document.createElement("hr");
+			searchDivider.className = "my-4";
+			pageContainer.appendChild(searchDivider);
+
+			colDiv = mkDiv("leftColumn", "col-md-6", null);
+			searchHeader = mkDiv("searchHeader", null, "Search results for ");
+			querySpan = mkSpan(null, "searchQuery", null);
+
+			searchHeader.appendChild(querySpan);
+			colDiv.appendChild(searchHeader);
+
+			search_results_header_div = mkDiv("search_results_header_div", null, null);
+			colDiv.appendChild(search_results_header_div);
+
+			resultsContainer = mkDiv("search_results_container", null, "Loading search results...");
+			colDiv.appendChild(resultsContainer);
+
+			search_results_footer_div = mkDiv("search_results_footer_div", null, null);
+			colDiv.appendChild(search_results_footer_div);
+
+			rowDiv.appendChild(colDiv);
+
+			colDiv = mkDiv("archive_right_column", "col-md-6", null);
+			rowDiv.appendChild(colDiv);
+
+			pageContainer.appendChild(rowDiv);
+			dispatch_archive_search(searchQuery);
+		}
+		function dispatch_archive_search(searchQuery) {
+			querySpan = document.getElementById("searchQuery");
+			querySpan.innerHTML = searchQuery;
+			reqUrl = "./ep-searchArchive?orgId=townofsuperior&q=" + searchQuery;
+			loadJSON(reqUrl, function(responseObj) {
+				var searchResults = JSON.parse(responseObj);
+				result_count = Object.keys(searchResults["searchResults"]).length;
+				if (result_count > 0) {
+					display_archive_search_results(searchResults, "count_desc", 1);
+					draw_search_charts(
+						searchResults["chartData"]["countList"],
+						searchResults["chartData"]["dateList"],
+						searchResults["chartData"]["tooltipList"],
+						searchResults["chartData"]["pieData"]
+					);
+				} else {
+					search_results_container = document.getElementById("search_results_container");
+					search_results_container.innerHTML = "No Matching Results Found";
+				}
+				loaded_search_results = searchResults;
+	 		});
+	 	}
+	 	function display_archive_search_results(searchResults, sortType, current_archive_results_page) {
+			result_count = Object.keys(searchResults["searchResults"]).length;
+			document.getElementById("search_results_container").innerHTML = "";
+
+			search_results_header_div = document.getElementById("search_results_header_div");
+			search_results_footer_div = document.getElementById("search_results_footer_div");
+
+			search_results_header_div.innerHTML = "";
+			search_results_footer_div.innerHTML = "";
+
+			page_span_text = mkSpan("page_span_text", null, "page");
+			search_results_footer_div.appendChild(page_span_text.cloneNode(true));
+			
+			results_per_page = 8;
+			page_count = Math.ceil(result_count/results_per_page);
+			paginationDiv = null;
+			for (i = 1; i < (page_count + 1); i++) {
+				if (i != current_archive_results_page) {
+
+					page_href_footer = mkHref("archive_search_page_link", "#", i.toString());
+					page_href_footer.addEventListener("click", function(eventObj) {
+						eventObj.preventDefault();
+						display_archive_search_results(searchResults, sortType, this.innerHTML);
+					});
+					search_results_footer_div.appendChild(page_href_footer);
+
+				} else {
+					pageSpan = mkSpan("current_archive_results_page", null, i.toString());
+					search_results_header_div.appendChild(pageSpan.cloneNode(true));
+					search_results_footer_div.appendChild(pageSpan.cloneNode(true));
+				}
+					
+			}
+
+			sorted_search_results = sort_search_results(sortType, searchResults["searchResults"]);
+			max_search_int = (current_archive_results_page * results_per_page);
+			min_search_int = max_search_int - results_per_page;
+			if (max_search_int > result_count) {
+				max_search_int = result_count;
+			}
+			for (z = min_search_int; z < max_search_int; z++) {
+				selectedObj = sorted_search_results[z];
+				archive_search_result(
+					selectedObj.meetingDesc,
+					selectedObj.meetingDate,
+					selectedObj.transcriptMatches,
+					selectedObj.urlIdentifier,
+					searchQuery
+				)
+			}
+			if (result_count <= results_per_page) {
+				search_results_header_div.innerHTML = "&nbsp;";
+				search_results_footer_div.innerHTML = "&nbsp;";
+			}
+
+			search_results_header_div.innerHTML = "";
+
+			total_results_count = searchResults["resultsInfo"]["result_total"]
+			results_info_str = "Found " + total_results_count + " matches (" + result_count + " videos)";
+			results_info_div = mkDiv("results_info_div", null, results_info_str);
+			search_results_header_div.appendChild(results_info_div);
+
+			button_group_div = mkDiv(null, "btn-group dropleft", null);
+			sort_by_button = mkButton("btn btn-primary btn-md dropdown-toggle", "Sort by");
+			sort_by_button.type = "button";
+			sort_by_button.id = "search_sort_button";
+			sort_by_button.setAttribute("data-toggle", "dropdown");
+			sort_by_button.setAttribute("aria-haspopup", "true");
+			sort_by_button.setAttribute("aria-expanded", "false");
+			button_group_div.appendChild(sort_by_button);
+
+			dropdown_menu = mkDiv(null, "dropdown-menu", null);
+
+			result_item_desc = mkHref("dropdown-item active", "javascript:sort_dropdown_change('count_desc')", "Result Count (Desc)");
+			result_item_desc.id = "result_item_desc";
+
+			date_item_desc = mkHref("dropdown-item", "javascript:sort_dropdown_change('date_desc')", "Meeting Date (Desc)");
+			date_item_desc.id = "date_item_desc"
+			date_item_asc = mkHref("dropdown-item", "javascript:sort_dropdown_change('date_asc')", "Meeting Date (Asc)");
+			date_item_asc.id = "date_item_asc"
+
+			dropdown_menu.appendChild(result_item_desc);
+			dropdown_menu.appendChild(date_item_asc);
+			dropdown_menu.appendChild(date_item_desc);
+
+			button_group_div.appendChild(dropdown_menu);
+
+
+			search_results_header_div.appendChild(button_group_div);
+		}
+
+		function sort_dropdown_change(sortType) {
+			display_archive_search_results(loaded_search_results, sortType, 1);
+			result_item_desc = document.getElementById("result_item_desc");
+			date_item_asc = document.getElementById("date_item_asc");
+			date_item_desc = document.getElementById("date_item_desc");
+			if (sortType == "date_asc") {
+				date_item_asc.classList.add("active");
+				date_item_desc.classList.remove("active");
+				result_item_desc.classList.remove("active");
+			}
+			if (sortType == "count_desc") {
+				date_item_asc.classList.remove("active");
+				date_item_desc.classList.remove("active");
+				result_item_desc.classList.add("active");
+			}
+			if (sortType == "date_desc") {
+				date_item_asc.classList.remove("active");
+				date_item_desc.classList.add("active");
+				result_item_desc.classList.remove("active");
+			}
+		}
+
+		function sort_search_results(sortType, unsorted_search_results) {
+			if (sortType == "date_asc") {
+				sorted_search_results = unsorted_search_results.sort(function(obj1, obj2) {
+					return obj1.dateIndex - obj2.dateIndex;
+				});
+			}
+			if (sortType == "date_desc") {
+				sorted_search_results = unsorted_search_results.sort(function(obj1, obj2) {
+					return obj2.dateIndex - obj1.dateIndex;
+				});
+			}
+			if (sortType == "count_desc") {
+				sorted_search_results = unsorted_search_results.sort(function(obj1, obj2) {
+					return  obj2.transcriptMatches - obj1.transcriptMatches;
+				});
+			}
+			return sorted_search_results;
+		}
+
+		function draw_search_charts(countList, dateList, tooltipList, pieData) {
+			colDiv = document.getElementById("archive_right_column");
+			scatterCard = mkDiv("scatterCard", "card", "Loading scatter plot chart...");
+			pieCard = mkDiv("pieCard", "card", "Loading pie chart...");
+			colDiv.appendChild(scatterCard);
+			colDiv.appendChild(pieCard);
+
+			if (chartsReady == true) {
+				draw_search_scatter_chart(countList, dateList, tooltipList);
+				draw_search_pie_chart(pieData);
+			} else {
+				setTimeout(draw_search_charts, 250);
+			}
+		}
+		function draw_search_scatter_chart(countList, dateList, tooltipList) {
+			var dataTable = new google.visualization.DataTable();
+			dataTable.addColumn("date", "Date");
+			dataTable.addColumn("number", "Count");
+			dataTable.addColumn( {
+				type: "string",
+				role: "tooltip"
+			} );
+			if (countList.length == dateList.length) {
+				countList.forEach(function(cntElem, i) {
+					dataTable.addRow(
+						[ new Date(dateList[i]), cntElem, tooltipList[i] ]
+					);
+				});
+			}
+			var optionsObj = {
+				title: "Search Results Over Time",
+				width: 290,
+				height: 300,
+				chartArea: {
+					left: 60,
+					right: 0,
+					top: 30,
+					bottom: 70
+				},
+				hAxis: {
+					title: "Meeting Date",
+					format: "MMM dd yy",
+					slantedText: true,
+					slantedTextAngle: 30
+				},
+				vAxis: {
+					title: "Search Result Count",
+					minValue: 0
+				},
+				curveType: "function",
+				pointSize: 10,
+				colors: ["#4682c1"],
+				legend: "none",
+				tooltip: { isHtml: true },
+			};
+
+			var chartObj = new google.visualization.ScatterChart(document.getElementById("scatterCard"));
+
+			chartObj.draw(dataTable, optionsObj);
+		}
+		function draw_search_pie_chart(pieData) {
+			var dataTable = new google.visualization.DataTable();
+			dataTable.addColumn("string", "Meeting Type");
+			dataTable.addColumn("number", "Result Count");
+			dataTable.addRows(pieData);
+
+			var optionsObj = {
+				title: "Search Results By Meeting Type",
+				width: 300,
+				height: 220,
+				chartArea: {
+					left: 0,
+					right: 0,
+					top: 20,
+					bottom: 0
+				},
+				is3d: true,
+				colors:["#4682c1", "#6B9BCD", "#89AFD7", "#A1BFDF", "#B4CCE5"],
+				sliceVisibilityThreshold: .07
+			};
+
+			var chartObj = new google.visualization.PieChart(document.getElementById("pieCard"));
+			chartObj.draw(dataTable, optionsObj);
+		}
+		function archive_search_result(meetingDesc, meetingDate, matchTrans, urlIdentifier, searchQuery){
+			resultsCard = mkDiv("search_result_card", "card", null);
+			resultsTitle = mkHeading("h6", "search_result_title", meetingDesc, true);
+			resultsCard.appendChild(resultsTitle);
+			
+			secondRow = mkDiv("second_row", null, null);
+
+			secondRow.appendChild(document.createTextNode(meetingDate));
+			transTxt = "results in transcript: " + matchTrans.toString();
+			thirdRow = mkDiv("third_row", null, transTxt)
+
+			resultsCard.appendChild(secondRow);
+			resultsCard.appendChild(thirdRow);
+			cardHref = mkHref("linked-card", "#", null);
+			cardHref.appendChild(resultsCard);
+			cardHref.addEventListener("click", function(eventObj) {
+				eventObj.preventDefault();
+				window.location.hash = "#meeting-details?m=" + urlIdentifier + "&q=" + searchQuery;
+			});
+
+			resultsContainer = document.getElementById("search_results_container");
+			resultsContainer.appendChild(cardHref);
+		}
+
+		function pg_upcomingMeetings() {
+			currentPage = "upcomingMeetings";
+			pageContainer = document.getElementById("pageContainer");
+			pageContainer.innerHTML = "";
+			rowDiv = mkDiv(null, "row", null);
+			colDiv = mkDiv(null, "col-md-12", null);
+			headerText = mkHeading("h3", "title", "Upcoming Meetings", false);
+			colDiv.appendChild(headerText);
+
+			newTable =  document.createElement("table");
+			newTable.className = "table table-striped";
+
+			tableHeader = document.createElement("thead");
+			headerRow = document.createElement("tr");
+			eventCol =  document.createElement("th");
+			eventCol.width = "70%";
+			eventCol.innerHTML = "Meeting";
+
+			dateCol =  document.createElement("th");
+			dateCol.width = "30%";
+			dateCol.innerHTML = "Date";
+
+			headerRow.appendChild(eventCol);
+			headerRow.appendChild(dateCol);
+
+			tableHeader.appendChild(headerRow);
+			tableBody = document.createElement("tbody");
+			tableBody.id = "upcomingTable";
+
+			tableRow = document.createElement("tr");
+			wideCol =  document.createElement("td");
+			wideCol.innerHTML = "Loading schedule...";
+			wideCol.colSpan = 2;
+			wideCol.id = "loadingRow";
+			tableRow.appendChild(wideCol);
+			tableBody.appendChild(tableRow);
+
+			newTable.appendChild(tableHeader);
+			newTable.appendChild(tableBody);
+			colDiv.appendChild(newTable);
+
+			rowDiv.appendChild(colDiv);
+			pageContainer.appendChild(rowDiv);
+
+			reqUrl = "./ep-upcomingMeetings";
+			loadJSON(reqUrl, function(responseObj) {
+				tableBody = document.getElementById("upcomingTable");
+				tableBody.innerHTML = "";
+				var upcomingObj = JSON.parse(responseObj);
+				Object.keys(upcomingObj)
+					.sort()
+					.forEach(function(key, value) {
+						upcomingRow(
+							upcomingObj[key].meetingDesc,
+							upcomingObj[key].meetingDate
+						)
+				});
+	 		});
+		}
+		function pg_meetingDetails(urlIdentifier, searchQuery, timeStamp) {
+			currentPage = "meetingDetails";
+			reqUrl = "./ep-meetingDetails?urlIdentifier=" + urlIdentifier.toString();
+			loadJSON(reqUrl, function(responseObj) {
+				var meetingDetails = JSON.parse(responseObj);
+
+				if (meetingDetails && !meetingDetails["error"]) {
+					var displayDesc = meetingDetails.desc;
+					meetingDesc = mkHeading("h4", null, displayDesc, true);
+					var displayDate = meetingDetails.date;
+					meetingDate = mkHeading("h5", null, displayDate, true);
+					meetingDate.setAttribute("style", "color: #696969;")
+
+					infoDiv = mkDiv("meetingInfo", null, null);
+
+					locationHdr = mkHeading("h3", null, "Town of Superior, Colorado", true);
+					locationDiv = mkDiv("locationDiv", null, null)
+					locationDiv.appendChild(locationHdr);
+					infoDiv.appendChild(locationDiv);
+
+					infoDiv.appendChild(meetingDesc);
+					infoDiv.appendChild(meetingDate);					
+					pageContainer = document.getElementById("pageContainer");
+					pageContainer.appendChild(infoDiv);
+					populate_meetingDetails(meetingDetails, searchQuery, timeStamp);
+				} else {
+					pg_meetingArchive();
+				}
+	 		});
+	 	}
+		function downloadButton(iconStyle, fileUrl, buttonTxt) {
+			iconObj = mkItalic(iconStyle, null);
+			buttonObj = mkButton("btn btn-primary", null);
+			buttonObj.appendChild(iconObj);
+			if (fileUrl) {
+				buttonObj.addEventListener("click", function() {
+					window.open(fileUrl, "_blank");
+				});
+			} else {
+				buttonObj.disabled = true;
+			}
+			buttonObj.appendChild(document.createTextNode(buttonTxt));
+
+			return buttonObj;
+		}
+		function get_shareable_url() {
+			currentHash = window.location.hash;
+			paramsDict = parseUrl(currentHash)
+
+			base_url = window.location.href.split("?")[0];
+			video_link = base_url;
+
+			if (paramsDict["m"]) {
+				video_link = video_link + "?m=" + paramsDict["m"];
+			}
+
+			if (paramsDict["q"] && paramsDict["q"] != null) {
+				video_link = video_link + "&q=" + paramsDict["q"];
+			}
+
+			if (playerObj) {
+				current_timestamp = playerObj.getCurrentTime();
+				video_link = video_link + "&t=" + parseInt(current_timestamp).toString();
+			} else if (paramsDict["t"]) {
+				video_link = video_link + "&q=" + paramsDict["q"];
+			} else {
+				video_link = video_link + "&t=0";
+			}
+			
+			return video_link;
+		}
+
+	 	function populate_meetingDetails(meetingDetails, searchQuery, timeStamp) {
+			loadedVideo = meetingDetails.youtubeId;
+		 	loadedMeeting = meetingDetails.urlIdentifier;
+			rowDiv = mkDiv("detailsRow", "row", null);
+
+			colDiv = mkDiv(null, "col-lg-6", null);
+			videoHeader = mkDiv(null, "sectionHeader", "Watch Video Footage");
+
+			colDiv.appendChild(videoHeader);
+			playerDiv = document.createElement("iframe");
+			playerDiv.id = "videoPlayer";
+			playerDiv.height = "360px";
+			playerDiv.width = "100%";
+			playerDiv.type = "text/html";
+			playerDiv.frameborder = "0";
+			srcUrl = "https://www.youtube.com/embed/" + loadedVideo + "?enablejsapi=1&showinfo=0&rel=0&fs=0&modestbranding=1";
+
+			if (timeStamp) {
+				srcUrl = srcUrl + "&start=" + timeStamp;
+				// + "&autoplay=1&mute=1";
+			}
+
+			playerDiv.src = srcUrl;
+			colDiv.appendChild(playerDiv);
+
+			video_link_div = mkDiv("video_link_div", null, null);
+			video_link_desc = mkDiv("video_link_desc", null, "Link to the current spot in this video:");
+			video_link_button = mkButton("btn btn-outline-dark btn-sm", "Copy Link");
+			video_link_button.id = "copy_video_link_btn";
+			video_link_button.setAttribute("type", "button");
+			video_link_button.setAttribute("data-container", "body");
+			video_link_button.setAttribute("data-toggle", "popover");
+			video_link_button.setAttribute("data-placement", "left");
+			video_link_button.setAttribute("data-content", "Link Copied to Clipboard");
+			video_link_button.addEventListener("focus", function() {
+				document.getElementById("video_link_textbox").value = get_shareable_url();
+				$("#copy_video_link_btn").popover();
+
+				setTimeout(function () {
+					$("#copy_video_link_btn").popover("dispose");
+				}, 2000);
+			});
+			video_link_button.addEventListener("click", function(eventObj) {
+				document.getElementById("video_link_textbox").focus();
+				document.getElementById("video_link_textbox").select();
+				document.execCommand("copy");
+			});
+			video_link_textbox = document.createElement("input");
+			video_link_textbox.id = "video_link_textbox";
+
+			video_link_textbox.value = get_shareable_url();
+
+			video_link_textbox.readOnly = true;
+			video_link_textbox.addEventListener("click", function() {
+				document.getElementById("video_link_textbox").value = get_shareable_url();
+				document.getElementById("video_link_textbox").focus();
+				document.getElementById("video_link_textbox").select();
+			});
+			video_link_div.appendChild(video_link_desc);
+			video_link_div.appendChild(video_link_button);
+			video_link_div.appendChild(video_link_textbox);
+			colDiv.appendChild(video_link_div);
+
+			if (meetingDetails.hasSegments === 1) {
+				segmentSection = mkDiv("segmentRow", null, null);
+				colDiv.appendChild(segmentSection);
+
+				reqUrl = "./ep-segmentMarkers?urlIdentifier=" + loadedMeeting.toString();
+				loadJSON(reqUrl, function(responseObj) {
+					var fileJson = JSON.parse(responseObj);
+
+					if (Object.keys(fileJson).length > 0) {
+						segmentSection = document.getElementById("segmentRow");
+						segmentHeader = mkDiv(null, "sectionHeader", "Jump to a Video Segment");
+						segmentCard = mkDiv("segmentCard", "card", null);
+						segmentContainer = mkDiv("segmentContainer", "card-body", null);
+						segmentEntries = document.createElement("ul");
+						segmentEntries.id = "segmentEntries";
+						segmentEntries.className = "list-group list-group-flush";
+						segmentSection.appendChild(segmentHeader);
+						segmentContainer.appendChild(segmentEntries);
+						segmentCard.appendChild(segmentContainer);
+						segmentSection.appendChild(segmentCard);
+
+						Object.keys(fileJson)
+							.sort()
+							.forEach(function(key, value) {
+								segmentEntry = document.createElement("li");
+								segmentEntry.className = "list-group-item list-group-item-action waves-effect";
+								entryDiv = mkDiv(null, "segmentEntry", null);
+								iconDiv = mkDiv(null, "segmentIcon_div", null);
+								segmentIcon = mkItalic("fa fa-bookmark-o segment_icon", null);
+								iconDiv.appendChild(segmentIcon);
+								entryDiv.appendChild(iconDiv);
+								segmentText = document.createTextNode(fileJson[key]);
+								entryDiv.appendChild(segmentText);
+								segmentEntry.appendChild(entryDiv);
+								segmentEntry.addEventListener("click", function(eventObj) {
+									eventObj.preventDefault();
+									player_seek_to(key);
+									if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+										document.getElementById("meetingInfo").scrollIntoView();
+									}
+								});
+								segmentEntries = document.getElementById("segmentEntries");
+								segmentEntries.appendChild(segmentEntry);
+						});
+
+					}
+
+				});
+
+			}
+
+			downloadSection = mkDiv("downloadRow", null, null);
+			downloadHeader = mkDiv(null, "sectionHeader", "Related Downloads");
+
+			downloadItems = mkDiv("downloadItems", "", null);
+
+			agendaButton = downloadButton("fa fa-list mr-3", meetingDetails.agendaUrl, "Meeting Agenda");
+			downloadItems.appendChild(agendaButton);
+
+			minutesButton = downloadButton("fa fa-file-text mr-3", null, "Meeting Minutes");
+			downloadItems.appendChild(minutesButton);
+
+			videoButton = downloadButton("fa fa-video-camera mr-3", meetingDetails.videoUrl, "Source Video");
+			downloadItems.appendChild(videoButton);
+
+			transcriptButton = downloadButton("fa fa-pencil mr-3", meetingDetails.transcriptUrl, "Meeting Transcript");
+			downloadItems.appendChild(transcriptButton);
+
+			downloadSection.appendChild(downloadHeader);
+			downloadSection.appendChild(downloadItems);
+
+			colDiv.appendChild(downloadSection);
+
+			rowDiv.appendChild(colDiv);
+			pageContainer.appendChild(rowDiv);
+
+			playerObj = new YT.Player("videoPlayer", {});
+
+			in_video_search_interface(meetingDetails.wordCloud, searchQuery);
+		}
+		function in_video_search_interface(wordCloud, searchQuery) {
+			boxId = "in_video_search_input";
+			searchBox = document.createElement("input");
+			searchBox.type = "search";
+			searchBox.id = "in_video_search_input";
+			searchBox.autocomplete = "off";
+			if (searchQuery) {
+				searchBox.value = searchQuery;
+			}
+			searchBox.className = "form-control";
+			searchBox.placeholder = "Search The Dialogue Within This Video";
+			searchBox.addEventListener("search", function(e) {
+				searchQuery = document.getElementById(boxId).value;
+				in_video_search(searchQuery);
+			});
+			detailsRow = document.getElementById("detailsRow");
+			colDiv = mkDiv("rightColumn", "col-lg-6", null);
+			rowDiv = mkDiv("searchRow", null, null);
+			contentsHeader = mkDiv(null, "sectionHeader", "Explore Video Contents");
+			rowDiv.appendChild(contentsHeader);
+			mdDiv = mkDiv("video_contents_div", "col-md-13", null);
+			cardDiv = mkDiv("searchCard", "card", null);
+			cardHeader = mkDiv(null, "card-header lighten-1 white-text", null);
+			inputGrp = mkDiv(null, "input-group", null);
+			inputPrepend = mkDiv(null, "input-group-prepend", null);
+			logoSpan = mkSpan("input-group-text", null, null);
+			searchLogo = mkItalic("fa fa-search", null);
+
+			cardBody = mkDiv("resultsContainer", "card-body", null);
+			resultsList = mkDiv("searchResults", "list-group list-group-flush", null);
+			if (wordCloud) {
+				//var wcImg = new Image(538, 382);
+				var wcImg = new Image();
+				loaded_word_cloud = wordCloud;
+				wcImg.src = wordCloud;
+				wcImg.id = "wordCloud";
+				resultsList.appendChild(wcImg);
+			}
+			cardBody.appendChild(resultsList);
+
+			logoSpan.appendChild(searchLogo);
+			inputPrepend.appendChild(logoSpan);
+			inputGrp.appendChild(inputPrepend);
+			inputGrp.appendChild(searchBox);
+			cardHeader.appendChild(inputGrp);
+			cardDiv.appendChild(cardHeader);
+			cardDiv.appendChild(cardBody);
+			mdDiv.appendChild(cardDiv);
+			rowDiv.appendChild(mdDiv);
+			colDiv.appendChild(rowDiv);
+			detailsRow.appendChild(colDiv);
+			relatedDocs();
+			if (searchQuery) {
+				in_video_search(searchQuery);
+			}
+		}
+		function in_video_search(searchQuery) {
+			searchResults = document.getElementById("searchResults");
+			searchResults.innerHTML = "";
+			loadingDiv = mkDiv("loading_search_results", null, "Loading search results...");
+			searchResults.appendChild(loadingDiv);
+
+			if (searchQuery.length != 0) {
+				urlParams = {
+					"q": searchQuery,
+					"urlId": loadedMeeting,
+					"orgId": "townofsuperior"
+				}
+				requestUrl = "./ep-searchVideo?" + dictToURI(urlParams);
+				loadJSON(requestUrl, function(responseObj) {
+					var searchResults = JSON.parse(responseObj);
+					resultCnt = Object.keys(searchResults).length;
+					resultsDiv = document.getElementById("searchResults");
+					resultsDiv.innerHTML = "";
+					headerDiv = resultsHeader(resultCnt);
+					resultsDiv.appendChild(headerDiv);
+					Object.keys(searchResults)
+						.sort()
+						.forEach(function(key, value) {
+							appendResults(
+								parseInt(key),
+								searchResults[key].timestamp,
+								searchResults[key].length,
+								searchResults[key].result
+							);
+					});
+	 			});
+	 		} else {
+	 			clearResults();
+	 		}
+		}
+		function dictToURI(dict) {
+			var str = [];
+			for(var p in dict){
+				str.push(encodeURIComponent(p) + "=" + encodeURIComponent(dict[p]));
+			}
+			return str.join("&");
+		}
+		function resultsHeader(resultCnt) {
+			resultsStr = resultCnt.toString() + " results";
+			countDiv = mkDiv(null, "countDiv", resultsStr);
+			clearHref = mkHref("", "javascript:void(0);", "clear results");
+			clearHref.addEventListener("click", function() {
+				clearResults();
+			});
+			clearDiv = mkDiv(null, "clearDiv", null);
+			clearDiv.appendChild(clearHref);
+			headerDiv = mkDiv(null, "resultsHeader", null);
+			headerDiv.appendChild(countDiv);
+			headerDiv.appendChild(clearDiv);
+
+			return headerDiv;
+		}
+		function clearResults() {
+			searchInput = document.getElementById("in_video_search_input");
+			searchInput.value = "";
+
+			searchResults = document.getElementById("searchResults");
+			searchResults.innerHTML = "";
+			if (loaded_word_cloud) {
+				//var wcImg = new Image(538, 382);
+				var wcImg = new Image();
+				wcImg.src = loaded_word_cloud;
+				searchResults.appendChild(wcImg);
+			}
+		}
+		function appendResults(resultSec, resultDts, resultLen, resultTxt) {
+			searchResults = document.getElementById("searchResults");			
+			timeStr = resultDts + " (" + resultLen + "s clip)";
+			timestampDiv = mkDiv(null, "searchTimestamp", timeStr);
+			resultDiv = mkDiv(null, "searchResult", resultTxt);
+			resultHref = mkHref("list-group-item list-group-item-action waves-effect", "#", "");
+			resultHref.addEventListener("click", function(eventObj) {
+				eventObj.preventDefault();
+				player_seek_to(resultSec);
+				if ( /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ) {
+					document.getElementById("meetingInfo").scrollIntoView();
+				}
+			});
+
+			resultHref.appendChild(timestampDiv);
+			resultHref.appendChild(resultDiv);
+			searchResults.appendChild(resultHref);
+		}
+		function openDoc(e) {
+			window.open(e.currentTarget.docUrl, "_blank");
+		}
+		function relatedDocs() {
+			reqUrl = "./ep-relatedFiles?urlIdentifier=" + loadedMeeting.toString();
+			loadJSON(reqUrl, function(responseObj) {
+				var fileJson = JSON.parse(responseObj);
+
+				if (Object.keys(fileJson).length > 0) {
+					filesSection = mkDiv("filesSection", null, null);
+					documentsHeader = mkDiv("relatedDocs", "sectionHeader", "Related Documents");
+					filesSection.appendChild(documentsHeader);
+
+					Object.keys(fileJson)
+						.sort()
+						.forEach(function(key, value) {
+							fileId = fileJson[key].fileId;
+
+							fileContainer = mkDiv(null, "fileContainer", null);
+							fileContainer.title = fileJson[key].fileName;
+
+							thumbnailContainer = mkDiv(null, "thumbnailContainer", null);
+							detailsContainer = mkDiv(null, "detailsContainer", null);
+							thumbnailLink = fileJson[key].thumbnailLink
+							thumbnailImg = mkImage(null, "fileThumbnail", thumbnailLink, "148", null);
+							thumbnailContainer.appendChild(thumbnailImg);
+
+							if (fileJson[key].fileType == "application/pdf") {
+								typeIcon = "./img/icon_3_pdf_x32.png";
+							}
+							if (fileJson[key].fileType == "application/msword") {
+								typeIcon = "./img/icon_1_word_x32.png";
+							}
+							typeImg = mkImage(null, "file_type_img", typeIcon, "28", null);
+							detailsContainer.appendChild(typeImg);
+							if (fileJson[key].fileName.length > 13) {
+								displayName = fileJson[key].fileName.substring(0,13) + "...";
+							} else {
+								displayName = fileJson[key].fileName;
+							}
+							detailsContainer.appendChild(document.createTextNode(displayName));
+
+							fileContainer.appendChild(thumbnailContainer);
+							fileContainer.appendChild(detailsContainer);
+
+							fileLink = fileJson[key].webViewLink;
+							fileContainer.addEventListener("click", openDoc, false);
+							fileContainer.docUrl = fileLink;
+
+							filesSection.appendChild(fileContainer);
+							fileContainer = null;			
+					});
+
+					rightColumn = document.getElementById("rightColumn");
+					rightColumn.appendChild(filesSection);
+				}
+			});
+		}
+		function pageChange() {
+			pageContainer = document.getElementById("pageContainer");
+			pageContainer.innerHTML = "";
+			archiveDisplay = 0;
+			loaded_word_cloud = null;
+		}
+
+		function player_seek_to(seconds) {
+			playerObj.seekTo(seconds, true);
+			playerObj.playVideo();
+		}
+
+		function parseUrl(currentHash) {
+			var paramsDict = {};
+
+			if (currentHash.includes("?")) {
+				paramsPart = currentHash.split("?");
+
+				urlParts = paramsPart[1].split("&");
+
+				for(var i = 0; i < urlParts.length; i++) {
+					var singleEntry = urlParts[i];
+					var keyPair = singleEntry.split("=");
+					var keyPart = keyPair[0];
+					var valPart = keyPair[1];
+					valPart = decodeURIComponent(valPart);
+					valPart = valPart.replace(/\+/g, ' ');
+					paramsDict[keyPart] = valPart;
+				}
+			}
+			return paramsDict;
+		}
+
+		function hashHandler() {
+			if (window.location.hash) {
+				currentHash = window.location.hash;
+				
+				paramsDict = parseUrl(currentHash)
+
+				if (currentHash.includes("#meeting-details?m=")) {
+					currentHash = currentHash.replace("#meeting-details?", "");
+
+					urlIdentifier = paramsDict["m"];
+					timeStamp = paramsDict["t"];
+					searchQuery = paramsDict["q"];
+
+					pageChange();
+					pg_meetingDetails(urlIdentifier, searchQuery, timeStamp);
+				}
+
+				if (currentHash === "#meeting-archive") {
+					pageChange();
+					pg_meetingArchive();
+				}
+
+				if (currentHash === "#upcoming-meetings") {
+					pageChange();
+					pg_upcomingMeetings();
+				}
+
+				if (currentHash.includes("#archive-search?")) {
+					searchQuery = paramsDict["q"];
+					pageChange();
+					pg_searchArchive(searchQuery);
+				}
+
+			} else {
+				window.location.hash = "#meeting-archive";
+			}
+		}
+
+		var playerObj;
+		var videoLoaded;
+
+		href_meetingArchive = document.getElementById("href-meeting-archive");
+		href_meetingArchive.addEventListener("click", function(eventObj) {
+			eventObj.preventDefault();
+			window.location.hash = "#meeting-archive";
+		});
+		href_upcomingMtgs = document.getElementById("href-upcoming-meetings");
+		href_upcomingMtgs.addEventListener("click", function(eventObj) {
+			eventObj.preventDefault();
+			window.location.hash = "#upcoming-meetings";
+		});
+
+		currentHash = null;
+
+		var archiveDisplay = 0;
+		var totalVideos = 0
+		var done = false;
+		var loadedVideo = null;
+		var loadedMeeting = null;
+		var loaded_word_cloud = null;
+		var loaded_search_results = null;
+
+		window.addEventListener("hashchange", hashHandler, false);
+		hashHandler();
+    </script>
+</body>
+
+</html>
