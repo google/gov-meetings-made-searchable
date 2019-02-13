@@ -34,7 +34,6 @@ def main():
 	q = request.args.get("q")
 	urlId = request.args.get("urlId")
 	orgId = request.args.get("orgId")
-		
 
 	searchClient = Elasticsearch(
 		["__Elastic_Search_Instance_URL__"],
