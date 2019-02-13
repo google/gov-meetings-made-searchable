@@ -1,4 +1,4 @@
-##Container to Create a Word Cloud from a List of Words
+## Container to Create a Word Cloud from a List of Words
 
 This is not an officially supported Google product, though support will be provided on a best-effort basis.
 

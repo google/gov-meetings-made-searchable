@@ -1,4 +1,4 @@
-##Container to Index the Transcript of a Meeting to Elastic Search
+## Container to Index the Transcript of a Meeting to Elastic Search
 
 This is not an officially supported Google product, though support will be provided on a best-effort basis.
 
