@@ -1,4 +1,4 @@
-## App Engine Flex In Video Search Service
+## App Engine Flex Service for "In" Video Search 
 
 This is not an officially supported Google product, though support will be provided on a best-effort basis.
 
