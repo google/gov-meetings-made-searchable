@@ -685,7 +685,7 @@ limitations under the License.
 			pageContainer.appendChild(make_loading_div());
 			remove_load_button();
 			
-			reqUrl = "./ep-meetingArchive?lastMeeting=" + archiveDisplay.toString();
+			reqUrl = "./ep-meetingArchive?orgId=" + orgIdentifier + "&lastMeeting=" + archiveDisplay.toString();
 			loadJSON(reqUrl, function(responseObj) {
 				remove_loading_div();
 				var archiveObj = JSON.parse(responseObj);
@@ -795,7 +795,8 @@ limitations under the License.
 		function pg_meetingArchive() {
 			//history.pushState(null, null, "#meeting-archive");
 			currentPage = "meetingArchive";
-			loadJSON("./ep-jumbotronContent", function(responseObj) {
+			reqUrl = "./ep-jumbotronContent?orgId=" + orgIdentifier;
+			loadJSON(reqUrl, function(responseObj) {
 				var jumbotronDetails = JSON.parse(responseObj);
 				totalVideos = jumbotronDetails["videoCnt"];
 				populateJumbotron(jumbotronDetails);
@@ -1734,6 +1735,7 @@ limitations under the License.
 		var loadedMeeting = null;
 		var loaded_word_cloud = null;
 		var loaded_search_results = null;
+		var orgIdentifier = "__Organization_Identifier__";
 
 		window.addEventListener("hashchange", hashHandler, false);
 		hashHandler();

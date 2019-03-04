@@ -19,16 +19,17 @@
 # limitations under the License.
 
 
+import cgi
 import utilities
 import ujson as json
 
 
-def meetingCount():
+def meetingCount(orgIdentifier):
 	sqlCmd = """select
 		count(*) from meetingRegistry
 		where orgIdentifier = %s
 		and youtubeId is not NULL"""
-	sqlData = ("townofsuperior")
+	sqlData = (orgIdentifier)
 	resultList = utilities.dbExecution(sqlCmd, sqlData)
 
 	return resultList[2][0][0]
@@ -36,11 +37,14 @@ def meetingCount():
 
 def main():
 
+	passedArgs = cgi.FieldStorage()
+	orgIdentifier = passedArgs["orgId"].value
+
 	outputObj = {}
-	outputObj["headerTxt"] = "Town of Superior, Colorado"
+	outputObj["headerTxt"] = "__Jumbotron_Display_Name_for_Municipality__"
 	outputObj["supportingTxt"] = "Public meetings and hearings"
 	outputObj["headerImg"] = "img/superior-outline-map.jpg"
-	outputObj["videoCnt"] = meetingCount()
+	outputObj["videoCnt"] = meetingCount(orgIdentifier)
 
 	print "Content-Type: application/json\n"
 	print json.dumps(outputObj)

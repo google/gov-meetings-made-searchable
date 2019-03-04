@@ -26,7 +26,7 @@ import ujson as json
 from datetime import datetime
 
 
-def getMeetings(qryLimit, qryOffset):
+def getMeetings(qryLimit, qryOffset, orgIdentifier):
 	sqlCmd = """select
 		meetingDesc,
 		meetingDate,
@@ -37,7 +37,7 @@ def getMeetings(qryLimit, qryOffset):
 		order by meetingDate DESC
 		limit %s
 		offset %s"""
-	sqlData = ("townofsuperior", int(qryLimit), int(qryOffset))
+	sqlData = (orgIdentifier, int(qryLimit), int(qryOffset))
 	resultList = utilities.dbExecution(sqlCmd, sqlData)
 
 	lastDate = None
@@ -82,15 +82,17 @@ def main():
 
 	try:
 		lastMeeting = int(passedArgs["lastMeeting"].value)
+		orgIdentifier = passedArgs["orgId"].value
 	except:
 		lastMeeting = 0
+		orgIdentifier = None
 
 	if lastMeeting == 0:
 		meetingTotal = 3
 	else:
 		meetingTotal = 6
 
-	jsonObj = getMeetings(meetingTotal, lastMeeting)
+	jsonObj = getMeetings(meetingTotal, lastMeeting, orgIdentifier)
 
 	keyList = jsonObj.keys()
 	keyList.sort(reverse=True)
