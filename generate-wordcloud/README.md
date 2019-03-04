@@ -31,6 +31,12 @@ Google Cloud Storage as a PNG image and the public URL for the image is written 
 * You have created a Pubsub subscription called `wordcloud-creation-subscription`
 * You have deployed a utility service to handle database lookups and updates
 
+### Note
+
+The file `stopwords-20180109-133115.json` contains a sample batch of stop words. You will
+want to customize this file based on the frequency of common words and phrases used in
+the meetings you are transcribing and analyzing.
+
 ### Build and Run this container
 
 Build
