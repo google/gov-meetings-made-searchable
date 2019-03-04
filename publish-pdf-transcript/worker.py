@@ -89,7 +89,7 @@ def lookupMeeting(globalId):
 	respTxt = responseObj.text
 	jsonObj = json.loads(respTxt)
 
-	return jsonObj["prodTranscript"], jsonObj["meetingDate"]
+	return jsonObj["prodTranscript"], jsonObj["meetingDate"], jsonObj["orgIdentifier"]
 	
 
 def formatDate(meetingDate):
@@ -114,8 +114,8 @@ def meetingDetails(globalId):
 	return jsonObj["meetingDesc"], formattedDate, weekDay
 
 
-def gcsUpload(globalId, fileName, filePath):
-	cloudPath = "accounts/townofsuperior/enrichments/" + str(globalId) + "/transcripts/" + fileName
+def gcsUpload(globalId, orgIdentifier, fileName, filePath):
+	cloudPath = "accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/transcripts/" + fileName
 	clientObj = storage.Client.from_service_account_json(service_account_path)
 	bucketObj = clientObj.get_bucket(bucketName)
 	blobObj = bucketObj.blob(cloudPath)
@@ -131,7 +131,7 @@ def gcsUpload(globalId, fileName, filePath):
 
 def assignUrl(globalId, transcriptUrl):
 	reqUrl = utility_service_url + "/idTranscript"
-	payloadObj = { 
+	payloadObj = {
 		"gId": globalId,
 		"transcriptUrl": transcriptUrl
 	}
@@ -141,8 +141,8 @@ def assignUrl(globalId, transcriptUrl):
 	return respTxt
 
 
-def runCycle(globalId, prodTranscript):
-	basePath = "accounts/townofsuperior/enrichments/" + str(globalId) + "/transcripts/"
+def runCycle(globalId, orgIdentifier, prodTranscript):
+	basePath = "accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/transcripts/"
 	cloudPath = basePath + str(prodTranscript) + "/"
 	clientObj = storage.Client.from_service_account_json(service_account_path)
 	bucketObj = clientObj.get_bucket(bucketName)
@@ -194,7 +194,7 @@ def runCycle(globalId, prodTranscript):
 
 
 def mkTranscript(globalId):
-	prodTranscript, rawDate = lookupMeeting(globalId)
+	prodTranscript, rawDate, orgIdentifier = lookupMeeting(globalId)
 	meetingDesc, meetingDate, weekDay = meetingDetails(globalId)
 
 
@@ -254,7 +254,7 @@ def mkTranscript(globalId):
 	htmlStr += "</center>"
 	htmlStr += "<br><br>"
 
-	htmlStr += runCycle(globalId, prodTranscript)
+	htmlStr += runCycle(globalId, orgIdentifier, prodTranscript)
 
 	htmlStr += """
 		</body>
@@ -274,7 +274,7 @@ def mkTranscript(globalId):
 	print "pdfName: " + pdfName
 	pdfPath = os.path.join(dirPath, pdfName)
 	print "pdfPath: " + pdfPath
-	transcriptUrl = gcsUpload(globalId, pdfName, pdfPath)
+	transcriptUrl = gcsUpload(globalId, orgIdentifier, pdfName, pdfPath)
 	print assignUrl(globalId, transcriptUrl)
 	os.remove(htmlPath)
 	os.remove(pdfPath)

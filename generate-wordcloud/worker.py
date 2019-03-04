@@ -106,12 +106,12 @@ def getStopwords():
 	return stopwordList
 
 
-def generateStr(globalId, prodTranscript):
+def generateStr(globalId, orgIdentifier, prodTranscript):
 	masterStr = ""
 	stopWords = set(stopwords.words("english"))
 
 	fileName = "rawTxt-" + str(globalId) + "-" + prodTranscript + "-list.txt"
-	cloudPath = "accounts/townofsuperior/enrichments/" + str(globalId) + "/transcripts/" + fileName
+	cloudPath = "accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/transcripts/" + fileName
 	clientObj = storage.Client.from_service_account_json(service_account_path)
 	bucketObj = clientObj.get_bucket(bucketName)
 	blobObj = bucketObj.blob(cloudPath)
@@ -208,8 +208,8 @@ def generateWordcloud(wordStr, outputFile):
 	imsave(outputFile, smallerImg)
 
 
-def gcsUpload(globalId, fileName, filePath):
-	cloudPath = "accounts/townofsuperior/enrichments/" + str(globalId) + "/wordclouds/" + fileName
+def gcsUpload(globalId, orgIdentifier, fileName, filePath):
+	cloudPath = "accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/wordclouds/" + fileName
 	clientObj = storage.Client.from_service_account_json(service_account_path)
 	bucketObj = clientObj.get_bucket(bucketName)
 	blobObj = bucketObj.blob(cloudPath)
@@ -244,21 +244,21 @@ def lookupMeeting(globalId):
 	respTxt = responseObj.text
 	jsonObj = json.loads(respTxt)
 
-	return jsonObj["prodTranscript"]
+	return jsonObj["prodTranscript"], jsonObj["orgIdentifier"]
 
 
 def dispatchWorker(ackId, globalId):
 	successFlag = None
 	try:
 		print ".. creating word cloud for meeting: " + str(globalId)
-		prodTranscript = lookupMeeting(globalId)
+		prodTranscript, orgIdentifier = lookupMeeting(globalId)
 		print "... word cloud will be made from transcript: " + str(prodTranscript)
 
 		epochTime = calendar.timegm(time.gmtime())
 		outputFile =  str(epochTime) + "-" + str(globalId) + "-wordcloud-538-by-382.png"
 		filePath = os.path.join(dirPath, outputFile)
 
-		outputList = generateStr(globalId, prodTranscript)
+		outputList = generateStr(globalId, orgIdentifier, prodTranscript)
 		print "... pulling words from file: " + outputList[1]
 		print ".... " + str(outputList[2]) + " words identified"
 		if outputList[2] > 0:
@@ -269,7 +269,7 @@ def dispatchWorker(ackId, globalId):
 			wordStr = outputList[0]
 			generateWordcloud(wordStr, filePath)
 
-			wcUrl = gcsUpload(globalId, outputFile, filePath)
+			wcUrl = gcsUpload(globalId, orgIdentifier, outputFile, filePath)
 			os.remove(filePath)
 			print "... word cloud URL: " + wcUrl
 			print "... URL assigned in database: " + str(assignUrl(globalId, wcUrl))

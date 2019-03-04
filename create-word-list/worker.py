@@ -89,8 +89,8 @@ def acknowledgeMsg(ackId):
 	return "... Pubsub message acknowledged"
 
 
-def get_api_results(globalId, prodTranscript):
-	basePath = "accounts/townofsuperior/enrichments/" + str(globalId) + "/transcripts/"
+def get_api_results(globalId, orgIdentifier, prodTranscript):
+	basePath = "accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/transcripts/"
 	cloudPath = basePath + str(prodTranscript) + "/"
 	clientObj = storage.Client.from_service_account_json(service_account_path)
 	bucketObj = clientObj.get_bucket(bucketName)
@@ -146,8 +146,8 @@ def results_files_to_string(transcriptList, exportType):
 	return masterStr, fileCnt
 
 
-def write_string_to_gcs(globalId, prodTranscript, exportType, masterStr):
-	basePath = "accounts/townofsuperior/enrichments/" + str(globalId) + "/transcripts/"
+def write_string_to_gcs(globalId, orgIdentifier, prodTranscript, exportType, masterStr):
+	basePath = "accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/transcripts/"
 	fileName = "rawTxt-" + str(globalId) + "-" + str(prodTranscript) + "-" + exportType + ".txt"
 	newPath = basePath + fileName
 
@@ -168,7 +168,7 @@ def lookupMeeting(globalId):
 	respTxt = responseObj.text
 	jsonObj = json.loads(respTxt)
 
-	return jsonObj["prodTranscript"]
+	return jsonObj["prodTranscript"], jsonObj["orgIdentifier"]
 
 
 def nextAction(globalId):
@@ -204,16 +204,16 @@ def dispatchWorker(ackId, globalId):
 	successFlag = None
 	try:
 		print ".. creating word list for meeting: " + str(globalId)
-		prodTranscript = lookupMeeting(globalId)
+		prodTranscript, orgIdentifier = lookupMeeting(globalId)
 		print "... word list will be created from transcript: " + str(prodTranscript)
-		transcriptList = get_api_results(globalId, prodTranscript)
+		transcriptList = get_api_results(globalId, orgIdentifier, prodTranscript)
 		print "... " + str(len(transcriptList)) + " files will be processed"
 		masterStr, fileCnt = results_files_to_string(transcriptList, "list")
 
 		print "... " + str(fileCnt) + " files processed"
 		print ".... the masterStr is " + str(len(masterStr)) + " characters in length"
 		if len(masterStr) > 0 and fileCnt > 0:
-			print write_string_to_gcs(globalId, prodTranscript, "list", masterStr)
+			print write_string_to_gcs(globalId, orgIdentifier, prodTranscript, "list", masterStr)
 			successFlag = True
 		else:
 			print ".... something isn't right so issuing a transcriptErr"
