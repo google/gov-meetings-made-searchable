@@ -32,25 +32,25 @@ from gcloud import storage
 bucketName = "__GCS_Storage_Bucket_Name__"
 
 
-def lookupTranscode(globalId):
-	sqlCmd = """select prodTranscode from meetingRegistry where globalId = %s"""
+def lookupMeeting(globalId):
+	sqlCmd = """select prodTranscode, orgIdentifier from meetingRegistry where globalId = %s"""
 	sqlData = [globalId]
 	resultObj = utilities.dbExecution(sqlCmd, sqlData)
 
-	return resultObj[2][0][0]
+	return resultObj[2][0][0], resultObj[2][0][1]
 
 
-def runCycle(globalId, prodTranscode, batchId):
+def runCycle(globalId, orgIdentifier, prodTranscode, batchId):
 	clientObj = storage.Client()
 	bucketObj = clientObj.get_bucket(bucketName)
-	listObj = bucketObj.list_blobs(prefix="accounts/townofsuperior/enrichments/" + str(globalId) + "/transcodes/" + prodTranscode)
+	listObj = bucketObj.list_blobs(prefix="accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/transcodes/" + prodTranscode)
 	fileCnt = 0
 	for eachEntry in listObj:
 
 		if ".flac" in eachEntry.name:
 			gcsLoc = "gs://" + eachEntry.bucket.name + "/" + eachEntry.name
 			sqlCmd = """insert into speechJobs (globalId, orgIdentifier, gcsLoc, beenProcessed, batchId) values (%s, %s, %s, %s, %s)"""
-			sqlData = [globalId, "townofsuperior", gcsLoc, 0, batchId]
+			sqlData = [globalId, orgIdentifier, gcsLoc, 0, batchId]
 			utilities.dbExecution(sqlCmd, sqlData)
 			fileCnt += 1
 
@@ -89,11 +89,11 @@ def main():
 			batchId = str(epochTime)
 			print "... creating Speech API jobs for meeting: " + str(globalId)
 
-			prodTranscript = lookupTranscode(globalId)
+			prodTranscript, orgIdentifier = lookupMeeting(globalId)
 			logging.info(prodTranscript)
 			print ".... production trascript is: " + prodTranscript
 
-			jobCnt = runCycle(globalId, prodTranscript, batchId)
+			jobCnt = runCycle(globalId, orgIdentifier, prodTranscript, batchId)
 			print ".... created " + str(jobCnt) + " Speech API jobs"
 
 			markTranscript(globalId, prodTranscript, batchId)

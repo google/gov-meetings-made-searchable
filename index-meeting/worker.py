@@ -142,7 +142,7 @@ def processFile(jsonObj, globalId, orgIdentifier, meetingDate, meetingDesc, urlI
 
 
 def runIndexing(globalId, prodTrans, orgIdentifier, meetingDate, meetingDesc, urlIdentifier):
-	cloudPath = "accounts/townofsuperior/enrichments/" + str(globalId) + "/transcripts/"  + str(prodTrans) + "/"
+	cloudPath = "accounts/" + orgIdentifier + "/enrichments/" + str(globalId) + "/transcripts/"  + str(prodTrans) + "/"
 	
 	clientObj = storage.Client.from_service_account_json(service_account_path)
 	bucketObj = clientObj.get_bucket(bucketName)
