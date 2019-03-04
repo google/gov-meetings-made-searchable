@@ -193,7 +193,7 @@ def runCycle(globalId, orgIdentifier, prodTranscript):
 	return htmlStr
 
 
-def mkTranscript(globalId):
+def mkTranscript(globalId, municipality_display_name, municipality_short_name):
 	prodTranscript, rawDate, orgIdentifier = lookupMeeting(globalId)
 	meetingDesc, meetingDate, weekDay = meetingDetails(globalId)
 
@@ -242,7 +242,7 @@ def mkTranscript(globalId):
 	"""
 
 	htmlStr += "<center>"
-	htmlStr += "<h1>Superior, Colorado</h1>"
+	htmlStr += "<h1>" + municipality_display_name + "</h1>"
 	htmlStr += "<h2>%s</h2>" % meetingDesc
 	htmlStr += "<h3>%s, %s</h3>" % (weekDay, meetingDate)
 	htmlStr += "<br>"
@@ -263,7 +263,7 @@ def mkTranscript(globalId):
 	meetingDesc = meetingDesc.replace(" ", "-")
 	meetingDesc = meetingDesc.replace("/", "-")
 	meetingDesc = meetingDesc.replace(",", "")
-	fileName = "Superior-" + str(rawDate) + "-" + meetingDesc + "-Transcript.html"
+	fileName = municipality_short_name + "-" + str(rawDate) + "-" + meetingDesc + "-Transcript.html"
 
 	htmlPath = os.path.join(dirPath, fileName)
 	htmlFile = open(htmlPath, "w")
@@ -312,9 +312,9 @@ def acknowledgeMsg(ackId):
 	return "... Pubsub message acknowledged"
 
 
-def dispatchWorker(ackId, globalId):
+def dispatchWorker(ackId, globalId, municipality_display_name, municipality_short_name):
 	try:
-		mkTranscript(globalId)
+		mkTranscript(globalId, municipality_display_name, municipality_short_name)
 		print acknowledgeMsg(ackId)
 	except Exception as e:
 		print "erroring out"
@@ -330,6 +330,11 @@ def main():
 	subStr = "projects/%s/subscriptions/%s" % (projectId, subName)
 	reqUrl = "https://pubsub.googleapis.com/v1/%s:pull" % subStr
 
+
+	municipality_display_name = ""
+	municipality_short_name = ""
+
+
 	while True:
 		psMsg = psCall(reqUrl, postPayload)
 		try:
@@ -340,7 +345,7 @@ def main():
 			globalId = jsonObj["receivedMessages"][0]["message"]["attributes"]["globalId"]
 			print ackId
 			print globalId
-			dispatchWorker(ackId, globalId)
+			dispatchWorker(ackId, globalId, municipality_display_name, municipality_short_name)
 		except:
 			pass
 		time.sleep(10)

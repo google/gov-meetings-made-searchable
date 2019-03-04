@@ -24,7 +24,7 @@ limitations under the License.
 -->
 
 <head>
-    <title>Superior, Colorado - Public Meetings & Hearings</title>
+    <title>Public Meetings & Hearings</title>
 
 	<script async src="https://www.googletagmanager.com/gtag/js?id=__Google_Analytics_Config_ID__"></script>
 	<script>
@@ -35,7 +35,7 @@ limitations under the License.
 	</script>
 
     <meta charset="utf-8">
-	<meta name="description" content="Town of Superior, Colorado public meetings and hearings.">
+	<meta name="description" content="Public meetings and hearings">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -906,7 +906,7 @@ limitations under the License.
 		function dispatch_archive_search(searchQuery) {
 			querySpan = document.getElementById("searchQuery");
 			querySpan.innerHTML = searchQuery;
-			reqUrl = "./ep-searchArchive?orgId=townofsuperior&q=" + searchQuery;
+			reqUrl = "./ep-searchArchive?orgId=" + orgIdentifier + "&q=" + searchQuery;
 			loadJSON(reqUrl, function(responseObj) {
 				var searchResults = JSON.parse(responseObj);
 				result_count = Object.keys(searchResults["searchResults"]).length;
@@ -1239,7 +1239,7 @@ limitations under the License.
 
 					infoDiv = mkDiv("meetingInfo", null, null);
 
-					locationHdr = mkHeading("h3", null, "Town of Superior, Colorado", true);
+					locationHdr = mkHeading("h3", null, municipality_title, true);
 					locationDiv = mkDiv("locationDiv", null, null)
 					locationDiv.appendChild(locationHdr);
 					infoDiv.appendChild(locationDiv);
@@ -1505,7 +1505,7 @@ limitations under the License.
 				urlParams = {
 					"q": searchQuery,
 					"urlId": loadedMeeting,
-					"orgId": "townofsuperior"
+					"orgId": orgIdentifier
 				}
 				requestUrl = "./ep-searchVideo?" + dictToURI(urlParams);
 				loadJSON(requestUrl, function(responseObj) {
@@ -1736,6 +1736,7 @@ limitations under the License.
 		var loaded_word_cloud = null;
 		var loaded_search_results = null;
 		var orgIdentifier = "__Organization_Identifier__";
+		var municipality_title = "__Municipality_Display_Title__";
 
 		window.addEventListener("hashchange", hashHandler, false);
 		hashHandler();
