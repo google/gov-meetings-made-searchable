@@ -36,14 +36,13 @@ def meetingCount(orgIdentifier):
 
 
 def main():
-
 	passedArgs = cgi.FieldStorage()
 	orgIdentifier = passedArgs["orgId"].value
 
 	outputObj = {}
 	outputObj["headerTxt"] = "__Jumbotron_Display_Name_for_Municipality__"
 	outputObj["supportingTxt"] = "Public meetings and hearings"
-	outputObj["headerImg"] = "img/superior-outline-map.jpg"
+	outputObj["headerImg"] = "img/sample-outline-map.jpg"
 	outputObj["videoCnt"] = meetingCount(orgIdentifier)
 
 	print "Content-Type: application/json\n"
