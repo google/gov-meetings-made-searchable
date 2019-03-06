@@ -21,7 +21,7 @@ limitations under the License.
 
 This is project to make the contents of public meetings searchable and discoverable. This
 repo is a series of utilities and containers you can use to transcode, transcribe, and
-publish content from videos public meetings and hearings.
+publish content from videos of public meetings and hearings.
 
 
 #### app-engine-front-end
