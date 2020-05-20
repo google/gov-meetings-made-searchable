@@ -26,4 +26,4 @@ gunicorn==19.6.0
 six==1.10.0
 honcho==0.7.1
 oauth2client==4.1.2
-httplib2==0.10.3
+httplib2==0.18.0
